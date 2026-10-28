@@ -40,6 +40,19 @@ BENCHMARKS = {
         ("BINOP", "+", "out", "c4", 8),
         ("PRINT", "out"),
     ],
+    "BM6_Input_Arithmetic": [
+        ("INPUT", "x"), ("INPUT", "y"),
+        ("BINOP", "+", "sum", "x", "y"),
+        ("BINOP", "*", "scaled", "sum", 1),
+        ("BINOP", "+", "offset", "scaled", 0), ("PRINT", "offset"),
+    ],
+    "BM7_Input_Redundant_Computation": [
+        ("INPUT", "x"), ("INPUT", "y"),
+        ("BINOP", "+", "t1", "x", "y"),
+        ("BINOP", "+", "t2", "y", "x"),
+        ("BINOP", "*", "t3", "t1", 1),
+        ("BINOP", "+", "out", "t3", 0), ("PRINT", "out"),
+    ],
     "BM5_Algebraic_Identities": [
         ("CONST", "p", 12),
         ("CONST", "q", 0),

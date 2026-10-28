@@ -1,0 +1,50 @@
+benchmark,variant,pipeline,fixed_point_cost,semantically_valid
+BM1_Arithmetic_Intensity,all_passes,CP -> CF -> CopyP -> CSE -> AS -> DCE,2,True
+BM1_Arithmetic_Intensity,without_CP,CF -> CopyP -> CSE -> AS -> DCE,13,True
+BM1_Arithmetic_Intensity,without_CF,CP -> CopyP -> CSE -> AS -> DCE,11,True
+BM1_Arithmetic_Intensity,without_CopyP,CP -> CF -> CSE -> AS -> DCE,2,True
+BM1_Arithmetic_Intensity,without_CSE,CP -> CF -> CopyP -> AS -> DCE,2,True
+BM1_Arithmetic_Intensity,without_AS,CP -> CF -> CopyP -> CSE -> DCE,2,True
+BM1_Arithmetic_Intensity,without_DCE,CP -> CF -> CopyP -> CSE -> AS,9,True
+BM2_Redundant_Expressions,all_passes,CP -> CF -> CopyP -> CSE -> AS -> DCE,2,True
+BM2_Redundant_Expressions,without_CP,CF -> CopyP -> CSE -> AS -> DCE,19,True
+BM2_Redundant_Expressions,without_CF,CP -> CopyP -> CSE -> AS -> DCE,17,True
+BM2_Redundant_Expressions,without_CopyP,CP -> CF -> CSE -> AS -> DCE,2,True
+BM2_Redundant_Expressions,without_CSE,CP -> CF -> CopyP -> AS -> DCE,2,True
+BM2_Redundant_Expressions,without_AS,CP -> CF -> CopyP -> CSE -> DCE,2,True
+BM2_Redundant_Expressions,without_DCE,CP -> CF -> CopyP -> CSE -> AS,11,True
+BM3_Dead_Code_Heavy,all_passes,CP -> CF -> CopyP -> CSE -> AS -> DCE,2,True
+BM3_Dead_Code_Heavy,without_CP,CF -> CopyP -> CSE -> AS -> DCE,6,True
+BM3_Dead_Code_Heavy,without_CF,CP -> CopyP -> CSE -> AS -> DCE,5,True
+BM3_Dead_Code_Heavy,without_CopyP,CP -> CF -> CSE -> AS -> DCE,2,True
+BM3_Dead_Code_Heavy,without_CSE,CP -> CF -> CopyP -> AS -> DCE,2,True
+BM3_Dead_Code_Heavy,without_AS,CP -> CF -> CopyP -> CSE -> DCE,2,True
+BM3_Dead_Code_Heavy,without_DCE,CP -> CF -> CopyP -> CSE -> AS,9,True
+BM4_Deep_Copy_Chain,all_passes,CP -> CF -> CopyP -> CSE -> AS -> DCE,2,True
+BM4_Deep_Copy_Chain,without_CP,CF -> CopyP -> CSE -> AS -> DCE,6,True
+BM4_Deep_Copy_Chain,without_CF,CP -> CopyP -> CSE -> AS -> DCE,5,True
+BM4_Deep_Copy_Chain,without_CopyP,CP -> CF -> CSE -> AS -> DCE,2,True
+BM4_Deep_Copy_Chain,without_CSE,CP -> CF -> CopyP -> AS -> DCE,2,True
+BM4_Deep_Copy_Chain,without_AS,CP -> CF -> CopyP -> CSE -> DCE,2,True
+BM4_Deep_Copy_Chain,without_DCE,CP -> CF -> CopyP -> CSE -> AS,8,True
+BM6_Input_Arithmetic,all_passes,CP -> CF -> CopyP -> CSE -> AS -> DCE,7,True
+BM6_Input_Arithmetic,without_CP,CF -> CopyP -> CSE -> AS -> DCE,7,True
+BM6_Input_Arithmetic,without_CF,CP -> CopyP -> CSE -> AS -> DCE,7,True
+BM6_Input_Arithmetic,without_CopyP,CP -> CF -> CSE -> AS -> DCE,9,True
+BM6_Input_Arithmetic,without_CSE,CP -> CF -> CopyP -> AS -> DCE,7,True
+BM6_Input_Arithmetic,without_AS,CP -> CF -> CopyP -> CSE -> DCE,13,True
+BM6_Input_Arithmetic,without_DCE,CP -> CF -> CopyP -> CSE -> AS,9,True
+BM7_Input_Redundant_Computation,all_passes,CP -> CF -> CopyP -> CSE -> AS -> DCE,7,True
+BM7_Input_Redundant_Computation,without_CP,CF -> CopyP -> CSE -> AS -> DCE,7,True
+BM7_Input_Redundant_Computation,without_CF,CP -> CopyP -> CSE -> AS -> DCE,7,True
+BM7_Input_Redundant_Computation,without_CopyP,CP -> CF -> CSE -> AS -> DCE,9,True
+BM7_Input_Redundant_Computation,without_CSE,CP -> CF -> CopyP -> AS -> DCE,7,True
+BM7_Input_Redundant_Computation,without_AS,CP -> CF -> CopyP -> CSE -> DCE,13,True
+BM7_Input_Redundant_Computation,without_DCE,CP -> CF -> CopyP -> CSE -> AS,10,True
+BM5_Algebraic_Identities,all_passes,CP -> CF -> CopyP -> CSE -> AS -> DCE,2,True
+BM5_Algebraic_Identities,without_CP,CF -> CopyP -> CSE -> AS -> DCE,11,True
+BM5_Algebraic_Identities,without_CF,CP -> CopyP -> CSE -> AS -> DCE,2,True
+BM5_Algebraic_Identities,without_CopyP,CP -> CF -> CSE -> AS -> DCE,2,True
+BM5_Algebraic_Identities,without_CSE,CP -> CF -> CopyP -> AS -> DCE,2,True
+BM5_Algebraic_Identities,without_AS,CP -> CF -> CopyP -> CSE -> DCE,2,True
+BM5_Algebraic_Identities,without_DCE,CP -> CF -> CopyP -> CSE -> AS,9,True

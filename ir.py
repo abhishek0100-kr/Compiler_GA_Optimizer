@@ -1,4 +1,4 @@
-VALID_OPCODES = {"CONST", "COPY", "BINOP", "PRINT"}
+VALID_OPCODES = {"INPUT", "CONST", "COPY", "BINOP", "PRINT"}
 VALID_BINOPS = {"+", "-", "*", "/"}
 
 
@@ -25,7 +25,10 @@ def validate_instruction(inst):
     if opcode not in VALID_OPCODES:
         return False, f"Unknown opcode '{opcode}'. Valid opcodes: {sorted(list(VALID_OPCODES))}"
 
-    if opcode == "CONST":
+    if opcode == "INPUT":
+        if len(inst) != 2 or not is_var_name(inst[1]):
+            return False, f"INPUT requires one destination variable: {inst}"
+    elif opcode == "CONST":
         if len(inst) != 3:
             return False, f"CONST requires 3 elements ('CONST', dest, value), got {len(inst)}: {inst}"
         dest, value = inst[1], inst[2]
@@ -80,7 +83,9 @@ def validate_ir(ir):
 
 def format_instruction(inst):
     opcode = inst[0]
-    if opcode == "CONST":
+    if opcode == "INPUT":
+        return f"INPUT {inst[1]}"
+    elif opcode == "CONST":
         return f"{inst[1]} = {inst[2]}"
     elif opcode == "COPY":
         return f"{inst[1]} = {inst[2]}"

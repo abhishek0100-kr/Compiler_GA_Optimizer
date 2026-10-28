@@ -5,7 +5,11 @@ def constant_propagation_pass(ir):
     for inst in ir:
         opcode = inst[0]
 
-        if opcode == "CONST":
+        if opcode == "INPUT":
+            known_constants.pop(inst[1], None)
+            new_ir.append(inst)
+
+        elif opcode == "CONST":
             dest, val = inst[1], inst[2]
             known_constants[dest] = val
             new_ir.append(inst)

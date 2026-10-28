@@ -37,13 +37,15 @@ def run_genetic_algorithm(
                     "cost": eval_result["cost"],
                     "fitness": eval_result["fitness"],
                     "optimized_ir": eval_result["optimized_ir"],
+                    "semantically_valid": eval_result.get("semantically_valid", True),
+                    "validation_detail": eval_result.get("validation_detail", ""),
                 }
             )
 
-        evaluated_pop.sort(key=lambda item: item["fitness"], reverse=True)
+        evaluated_pop.sort(key=lambda item: (item.get("semantically_valid", True), item["fitness"]), reverse=True)
 
         current_best = evaluated_pop[0]
-        if best_overall is None or current_best["fitness"] > best_overall["fitness"]:
+        if best_overall is None or (current_best.get("semantically_valid", True) and (not best_overall.get("semantically_valid", True) or current_best["fitness"] > best_overall["fitness"])):
             best_overall = current_best
 
         avg_fitness = sum(item["fitness"] for item in evaluated_pop) / len(

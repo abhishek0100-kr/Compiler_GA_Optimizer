@@ -1,0 +1,40 @@
+{
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "pass_names": [
+    "CP",
+    "CF",
+    "CopyP",
+    "CSE",
+    "AS",
+    "DCE"
+  ],
+  "cost_model": {
+    "INPUT": 1,
+    "CONST": 1,
+    "COPY": 1,
+    "BINOP": 3,
+    "PRINT": 2
+  },
+  "warning": "Static cost model only; results are not measured runtime. Semantic checks use a finite test set and are not formal proof."
+}

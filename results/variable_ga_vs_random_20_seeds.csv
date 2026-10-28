@@ -1,0 +1,141 @@
+benchmark,seed,ga_cost,random_search_cost_750_evals,fixed_point_baseline_cost,ga_semantically_valid,ga_pipeline,generations,population,candidate_evaluations,first_generation_at_own_best
+BM1_Arithmetic_Intensity,0,2,6,2,True,AS -> CP -> CF -> CP -> DCE -> CF -> CP -> DCE -> CF -> CP -> CP -> DCE,30,25,750,29
+BM1_Arithmetic_Intensity,1,3,6,2,True,CP -> CF -> AS -> CP -> CopyP -> CSE -> DCE -> CF -> CP -> DCE -> CF -> CP,30,25,750,23
+BM1_Arithmetic_Intensity,2,2,6,2,True,CP -> AS -> CF -> CP -> CF -> CP -> AS -> CF -> CP -> AS -> CF -> DCE,30,25,750,15
+BM1_Arithmetic_Intensity,3,2,6,2,True,CP -> CP -> CF -> DCE -> CP -> CF -> AS -> CP -> CF -> DCE -> CP -> DCE,30,25,750,13
+BM1_Arithmetic_Intensity,4,2,4,2,True,CP -> CF -> AS -> CP -> CP -> CF -> CP -> CF -> AS -> CP -> DCE -> CP,30,25,750,13
+BM1_Arithmetic_Intensity,5,2,5,2,True,CP -> CF -> CP -> CopyP -> CSE -> CF -> AS -> CP -> CF -> DCE -> CP -> DCE,30,25,750,9
+BM1_Arithmetic_Intensity,6,3,6,2,True,CSE -> CP -> CF -> CP -> AS -> AS -> CF -> CP -> CP -> CF -> DCE -> AS,30,25,750,5
+BM1_Arithmetic_Intensity,7,2,5,2,True,CP -> AS -> CP -> CF -> CP -> CF -> CP -> CF -> DCE -> CP -> AS -> DCE,30,25,750,10
+BM1_Arithmetic_Intensity,8,2,6,2,True,AS -> CP -> CF -> DCE -> CP -> CF -> DCE -> CP -> CF -> CP -> CF -> DCE,30,25,750,9
+BM1_Arithmetic_Intensity,9,2,6,2,True,CP -> DCE -> CF -> CP -> AS -> CP -> DCE -> CF -> CP -> CF -> CP -> DCE,30,25,750,27
+BM1_Arithmetic_Intensity,10,4,5,2,True,CP -> AS -> CopyP -> CopyP -> CF -> CP -> AS -> CopyP -> DCE -> CF -> CP -> CF,30,25,750,17
+BM1_Arithmetic_Intensity,11,2,6,2,True,CP -> CopyP -> CF -> CP -> AS -> CF -> CP -> CF -> CP -> AS -> DCE,30,25,750,17
+BM1_Arithmetic_Intensity,12,2,6,2,True,AS -> CP -> CP -> CF -> CP -> CF -> AS -> CP -> CP -> CF -> CP -> DCE,30,25,750,13
+BM1_Arithmetic_Intensity,13,2,3,2,True,AS -> CP -> CF -> CP -> CF -> CF -> CP -> CF -> CP -> AS -> CF -> DCE,30,25,750,27
+BM1_Arithmetic_Intensity,14,3,5,2,True,CSE -> AS -> CP -> CSE -> CF -> CP -> CSE -> CF -> CP -> DCE -> CSE -> CF,30,25,750,21
+BM1_Arithmetic_Intensity,15,2,6,2,True,AS -> CSE -> CP -> CopyP -> CSE -> CF -> CP -> CF -> CP -> CF -> CP -> DCE,30,25,750,20
+BM1_Arithmetic_Intensity,16,2,3,2,True,CopyP -> CP -> CF -> AS -> CopyP -> CP -> CF -> AS -> CP -> CF -> CP -> DCE,30,25,750,12
+BM1_Arithmetic_Intensity,17,2,6,2,True,CP -> CopyP -> CF -> CP -> AS -> CP -> DCE -> CF -> CP -> CF -> CP -> DCE,30,25,750,12
+BM1_Arithmetic_Intensity,18,2,6,2,True,AS -> CP -> CF -> DCE -> CP -> CF -> CP -> CF -> AS -> CP -> CF -> DCE,30,25,750,22
+BM1_Arithmetic_Intensity,19,2,6,2,True,CP -> CF -> CP -> AS -> CF -> CP -> AS -> CF -> CP -> CSE -> DCE -> CP,30,25,750,10
+BM2_Redundant_Expressions,0,2,7,2,True,CSE -> CP -> CF -> CP -> DCE -> CF -> CP -> DCE -> CF -> CP -> DCE -> CF,30,25,750,13
+BM2_Redundant_Expressions,1,2,7,2,True,CP -> CF -> CopyP -> CP -> CF -> CP -> CF -> CopyP -> CP -> AS -> CF -> DCE,30,25,750,11
+BM2_Redundant_Expressions,2,2,3,2,True,CP -> CF -> CP -> CF -> DCE -> CP -> AS -> AS -> CF -> CP -> CF -> DCE,30,25,750,18
+BM2_Redundant_Expressions,3,2,7,2,True,CP -> DCE -> CP -> CF -> AS -> CP -> CF -> CP -> CF -> CP -> DCE -> AS,30,25,750,6
+BM2_Redundant_Expressions,4,2,5,2,True,CP -> CF -> CP -> CF -> CP -> CopyP -> CF -> CopyP -> CP -> CopyP -> DCE -> CopyP,30,25,750,28
+BM2_Redundant_Expressions,5,2,5,2,True,CP -> CF -> CP -> CopyP -> CF -> CP -> CopyP -> CF -> AS -> CP -> DCE -> CopyP,30,25,750,21
+BM2_Redundant_Expressions,6,2,5,2,True,CP -> CF -> CSE -> DCE -> CP -> CF -> CP -> CopyP -> AS -> CF -> CP -> DCE,30,25,750,11
+BM2_Redundant_Expressions,7,2,5,2,True,AS -> CSE -> CP -> CF -> CP -> CF -> CP -> CP -> CF -> CP -> DCE -> CF,30,25,750,7
+BM2_Redundant_Expressions,8,2,7,2,True,CP -> CF -> CP -> CP -> CF -> DCE -> CP -> CF -> CF -> CP -> CSE -> DCE,30,25,750,7
+BM2_Redundant_Expressions,9,2,7,2,True,CP -> CSE -> DCE -> CF -> CP -> CF -> CP -> CSE -> CF -> DCE -> CP -> DCE,30,25,750,6
+BM2_Redundant_Expressions,10,2,5,2,True,CP -> CF -> CP -> CP -> CF -> CP -> DCE -> CopyP -> CF -> CP -> DCE -> CopyP,30,25,750,11
+BM2_Redundant_Expressions,11,2,7,2,True,CP -> CF -> CP -> CF -> AS -> CP -> CP -> CF -> CP -> CF -> DCE,30,25,750,14
+BM2_Redundant_Expressions,12,2,7,2,True,CP -> CF -> CP -> CSE -> CF -> AS -> CP -> CopyP -> CF -> CF -> CP -> DCE,30,25,750,9
+BM2_Redundant_Expressions,13,2,3,2,True,CP -> CF -> CP -> AS -> CF -> DCE -> CP -> CF -> CP -> AS -> CF -> DCE,30,25,750,12
+BM2_Redundant_Expressions,14,2,5,2,True,CopyP -> CP -> CP -> CF -> CF -> CP -> CF -> CP -> CopyP -> CF -> CP -> DCE,30,25,750,5
+BM2_Redundant_Expressions,15,2,7,2,True,CopyP -> CP -> CF -> CopyP -> CP -> CF -> CP -> CopyP -> CSE -> CF -> CP -> DCE,30,25,750,5
+BM2_Redundant_Expressions,16,2,3,2,True,CP -> CF -> AS -> CopyP -> CP -> CF -> CP -> CopyP -> CP -> CF -> CP -> DCE,30,25,750,7
+BM2_Redundant_Expressions,17,2,7,2,True,AS -> CP -> CSE -> CF -> CP -> CF -> CSE -> CP -> CF -> CSE -> CP -> DCE,30,25,750,8
+BM2_Redundant_Expressions,18,2,7,2,True,AS -> CP -> CF -> DCE -> CP -> CP -> CF -> CP -> CF -> CP -> DCE,30,25,750,9
+BM2_Redundant_Expressions,19,2,7,2,True,CF -> CP -> CF -> DCE -> CP -> CP -> CF -> CP -> CP -> CF -> CP -> DCE,30,25,750,9
+BM3_Dead_Code_Heavy,0,2,2,2,True,CP -> AS -> CSE -> CopyP -> CF -> CopyP -> CP -> DCE -> CP -> DCE,30,25,750,2
+BM3_Dead_Code_Heavy,1,2,2,2,True,DCE -> CP -> CF -> DCE -> DCE -> CopyP -> CP -> DCE -> CopyP,30,25,750,1
+BM3_Dead_Code_Heavy,2,2,2,2,True,CP -> CSE -> AS -> CP -> CF -> CF -> CP -> CP -> CopyP -> AS -> DCE -> DCE,30,25,750,1
+BM3_Dead_Code_Heavy,3,2,2,2,True,CP -> DCE -> CP -> CF -> AS -> CP -> CopyP -> CP -> CopyP -> CSE -> AS -> DCE,30,25,750,1
+BM3_Dead_Code_Heavy,4,2,2,2,True,CopyP -> CP -> CopyP -> CopyP -> CopyP -> CF -> DCE -> CSE -> AS -> DCE -> CP -> DCE,30,25,750,3
+BM3_Dead_Code_Heavy,5,2,2,2,True,CSE -> CF -> CP -> DCE -> CopyP -> CF -> CP -> DCE -> CF -> DCE -> DCE -> CopyP,30,25,750,2
+BM3_Dead_Code_Heavy,6,2,2,2,True,CP -> CF -> CF -> CP -> DCE -> CopyP -> AS -> DCE -> AS,30,25,750,1
+BM3_Dead_Code_Heavy,7,2,2,2,True,CP -> AS -> CopyP -> AS -> DCE -> CF -> CP -> CF -> DCE -> DCE -> AS -> CP,30,25,750,3
+BM3_Dead_Code_Heavy,8,2,2,2,True,CSE -> CP -> DCE -> CP -> CopyP -> CF -> DCE -> CP -> CSE -> DCE,30,25,750,1
+BM3_Dead_Code_Heavy,9,2,2,2,True,CF -> CSE -> CP -> CSE -> CF -> DCE -> CP -> DCE -> AS,30,25,750,1
+BM3_Dead_Code_Heavy,10,2,2,2,True,CP -> CF -> DCE -> CopyP -> CP -> CSE -> CP -> CF -> DCE,30,25,750,4
+BM3_Dead_Code_Heavy,11,2,2,2,True,CP -> CP -> CP -> CSE -> CSE -> CP -> CF -> CP -> CSE -> AS -> DCE,30,25,750,3
+BM3_Dead_Code_Heavy,12,2,2,2,True,CF -> CP -> CopyP -> DCE -> CopyP -> DCE -> CP -> CF -> CP -> CopyP -> DCE -> CopyP,30,25,750,2
+BM3_Dead_Code_Heavy,13,2,2,2,True,CF -> CF -> CP -> AS -> CF -> DCE -> CopyP -> CP -> CSE -> CF -> DCE -> AS,30,25,750,1
+BM3_Dead_Code_Heavy,14,2,2,2,True,CP -> AS -> AS -> DCE -> AS -> CopyP -> CSE -> CopyP -> CF -> CP -> DCE -> CSE,30,25,750,3
+BM3_Dead_Code_Heavy,15,2,2,2,True,CopyP -> CSE -> CP -> CopyP -> CSE -> CF -> CP -> DCE,30,25,750,1
+BM3_Dead_Code_Heavy,16,2,2,2,True,AS -> CopyP -> CP -> CF -> AS -> CopyP -> CP -> CF -> AS -> DCE -> DCE -> CP,30,25,750,1
+BM3_Dead_Code_Heavy,17,2,2,2,True,CopyP -> CSE -> DCE -> CP -> DCE -> CF -> CopyP -> CopyP -> CP -> DCE -> DCE -> CSE,30,25,750,1
+BM3_Dead_Code_Heavy,18,2,2,2,True,AS -> CSE -> CP -> CSE -> CF -> CSE -> CF -> CSE -> CP -> CF -> DCE,30,25,750,1
+BM3_Dead_Code_Heavy,19,2,2,2,True,AS -> CF -> CP -> CF -> CP -> AS -> CSE -> CSE -> DCE -> CP,30,25,750,1
+BM4_Deep_Copy_Chain,0,2,2,2,True,CP -> AS -> CSE -> CF -> CP -> AS -> DCE,30,25,750,2
+BM4_Deep_Copy_Chain,1,2,2,2,True,DCE -> CP -> CF -> DCE -> DCE -> CopyP -> CP -> DCE -> CopyP,30,25,750,1
+BM4_Deep_Copy_Chain,2,2,2,2,True,CP -> CSE -> AS -> CP -> CF -> CF -> CP -> CP -> CopyP -> AS -> DCE -> DCE,30,25,750,1
+BM4_Deep_Copy_Chain,3,2,2,2,True,CP -> DCE -> CP -> CF -> AS -> CP -> CopyP -> CP -> CopyP -> CSE -> AS -> DCE,30,25,750,1
+BM4_Deep_Copy_Chain,4,2,2,2,True,CP -> CopyP -> CF -> CSE -> CF -> CF -> CopyP -> CP -> CP -> CopyP -> DCE,30,25,750,3
+BM4_Deep_Copy_Chain,5,2,2,2,True,CopyP -> CopyP -> CF -> CP -> DCE -> CF -> DCE -> DCE -> CSE -> CF -> CP -> DCE,30,25,750,2
+BM4_Deep_Copy_Chain,6,2,2,2,True,CP -> CF -> CF -> CP -> DCE -> CopyP -> AS -> DCE -> AS,30,25,750,1
+BM4_Deep_Copy_Chain,7,2,2,2,True,CSE -> CP -> CF -> CopyP -> CP -> AS -> DCE -> CP -> AS -> CP -> CF,30,25,750,2
+BM4_Deep_Copy_Chain,8,2,2,2,True,CSE -> CP -> DCE -> CP -> CopyP -> CF -> DCE -> CP -> CSE -> DCE,30,25,750,1
+BM4_Deep_Copy_Chain,9,2,2,2,True,CF -> CSE -> CP -> CSE -> CF -> DCE -> CP -> DCE -> AS,30,25,750,1
+BM4_Deep_Copy_Chain,10,2,2,2,True,CP -> CF -> DCE -> CopyP -> CP -> CSE -> CP -> CF -> CSE -> DCE -> CSE -> CSE,30,25,750,3
+BM4_Deep_Copy_Chain,11,2,2,2,True,CP -> CP -> CP -> CF -> AS -> DCE -> DCE -> CopyP -> CSE -> CP -> DCE -> CP,30,25,750,3
+BM4_Deep_Copy_Chain,12,2,2,2,True,CF -> CP -> CopyP -> DCE -> CopyP -> DCE -> CP -> CF -> CP -> CopyP -> DCE -> CopyP,30,25,750,2
+BM4_Deep_Copy_Chain,13,2,2,2,True,CF -> CF -> CP -> AS -> CF -> DCE -> CopyP -> CP -> CSE -> CF -> DCE -> AS,30,25,750,1
+BM4_Deep_Copy_Chain,14,2,2,2,True,CopyP -> CP -> CP -> CopyP -> CF -> CP -> DCE -> CSE -> AS -> DCE -> CF -> CopyP,30,25,750,2
+BM4_Deep_Copy_Chain,15,2,2,2,True,CopyP -> CSE -> CP -> CopyP -> CSE -> CF -> CP -> DCE,30,25,750,1
+BM4_Deep_Copy_Chain,16,2,2,2,True,AS -> CopyP -> CP -> CF -> AS -> CopyP -> CP -> CF -> AS -> DCE -> DCE -> CP,30,25,750,1
+BM4_Deep_Copy_Chain,17,2,2,2,True,CopyP -> CSE -> DCE -> CP -> DCE -> CF -> CopyP -> CopyP -> CP -> DCE -> DCE -> CSE,30,25,750,1
+BM4_Deep_Copy_Chain,18,2,2,2,True,AS -> CSE -> CP -> CSE -> CF -> CSE -> CF -> CSE -> CP -> CF -> DCE,30,25,750,1
+BM4_Deep_Copy_Chain,19,2,2,2,True,AS -> CF -> CP -> CF -> CP -> AS -> CSE -> CSE -> DCE -> CP,30,25,750,1
+BM6_Input_Arithmetic,0,7,7,7,True,CopyP -> AS -> DCE -> AS -> CF -> CopyP -> CP -> DCE -> CP -> DCE,30,25,750,1
+BM6_Input_Arithmetic,1,7,7,7,True,AS -> CF -> CopyP -> CF -> DCE -> CF -> CSE -> CopyP,30,25,750,1
+BM6_Input_Arithmetic,2,7,7,7,True,DCE -> CSE -> DCE -> AS -> CF -> CSE -> CopyP -> CSE -> AS -> AS -> CopyP -> DCE,30,25,750,1
+BM6_Input_Arithmetic,3,7,7,7,True,CP -> DCE -> CP -> CF -> AS -> CP -> CopyP -> CP -> CopyP -> CSE -> AS -> DCE,30,25,750,1
+BM6_Input_Arithmetic,4,7,7,7,True,DCE -> CopyP -> CP -> AS -> CopyP -> DCE -> CSE -> AS -> CF -> CF -> CF,30,25,750,1
+BM6_Input_Arithmetic,5,7,7,7,True,AS -> CopyP -> CF -> CopyP -> CopyP -> DCE -> AS -> CP -> CopyP,30,25,750,1
+BM6_Input_Arithmetic,6,7,7,7,True,AS -> CF -> CP -> AS -> DCE -> CopyP -> CopyP -> DCE -> CF -> CSE -> CSE,30,25,750,1
+BM6_Input_Arithmetic,7,7,7,7,True,CP -> AS -> CopyP -> AS -> DCE -> CF -> CP -> AS -> AS,30,25,750,1
+BM6_Input_Arithmetic,8,7,7,7,True,CSE -> CSE -> CSE -> CP -> AS -> CP -> CopyP -> DCE -> CP -> CP,30,25,750,1
+BM6_Input_Arithmetic,9,7,7,7,True,AS -> CopyP -> CopyP -> CF -> CF -> DCE -> CP -> CopyP,30,25,750,1
+BM6_Input_Arithmetic,10,7,7,7,True,CP -> CSE -> CSE -> AS -> CP -> CF -> CSE -> CSE -> CopyP -> DCE,30,25,750,1
+BM6_Input_Arithmetic,11,7,7,7,True,CSE -> AS -> DCE -> CF -> CopyP -> CF -> AS -> CF -> DCE,30,25,750,2
+BM6_Input_Arithmetic,12,7,7,7,True,AS -> CP -> CP -> CopyP -> CopyP -> CP -> AS -> CP -> CF -> DCE,30,25,750,3
+BM6_Input_Arithmetic,13,7,7,7,True,CF -> CF -> CP -> AS -> CF -> DCE -> CopyP -> CP -> CSE -> CF -> DCE -> AS,30,25,750,1
+BM6_Input_Arithmetic,14,7,7,7,True,AS -> CF -> CopyP -> DCE -> CopyP -> CopyP -> DCE -> CP -> DCE -> CSE -> CopyP,30,25,750,1
+BM6_Input_Arithmetic,15,7,7,7,True,CSE -> AS -> CopyP -> DCE -> DCE -> CSE,30,25,750,1
+BM6_Input_Arithmetic,16,7,7,7,True,AS -> CopyP -> CP -> CF -> AS -> CopyP -> CP -> CF -> AS -> DCE -> DCE -> CP,30,25,750,1
+BM6_Input_Arithmetic,17,7,7,7,True,CopyP -> AS -> CopyP -> DCE -> DCE -> DCE -> CSE,30,25,750,1
+BM6_Input_Arithmetic,18,7,7,7,True,DCE -> CopyP -> CF -> CopyP -> CopyP -> DCE -> AS -> CopyP -> CF -> CSE -> DCE,30,25,750,1
+BM6_Input_Arithmetic,19,7,7,7,True,AS -> DCE -> DCE -> DCE -> DCE -> CopyP -> DCE -> DCE -> DCE -> AS -> CopyP,30,25,750,2
+BM7_Input_Redundant_Computation,0,7,7,7,True,CopyP -> AS -> DCE -> AS -> CF -> CopyP -> CP -> DCE -> CP -> DCE,30,25,750,1
+BM7_Input_Redundant_Computation,1,7,7,7,True,AS -> CF -> CopyP -> CF -> DCE -> CF -> CSE -> CopyP,30,25,750,1
+BM7_Input_Redundant_Computation,2,7,7,7,True,DCE -> CSE -> DCE -> AS -> CF -> CSE -> CopyP -> CSE -> AS -> AS -> CopyP -> DCE,30,25,750,1
+BM7_Input_Redundant_Computation,3,7,7,7,True,CP -> DCE -> CP -> CF -> AS -> CP -> CopyP -> CP -> CopyP -> CSE -> AS -> DCE,30,25,750,1
+BM7_Input_Redundant_Computation,4,7,7,7,True,DCE -> CopyP -> CP -> AS -> CopyP -> DCE -> CSE -> AS -> CF -> CF -> CF,30,25,750,1
+BM7_Input_Redundant_Computation,5,7,7,7,True,AS -> CopyP -> CF -> CopyP -> CopyP -> DCE -> AS -> CP -> CopyP,30,25,750,1
+BM7_Input_Redundant_Computation,6,7,7,7,True,AS -> CF -> CP -> AS -> DCE -> CopyP -> CopyP -> DCE -> CF -> CSE -> CSE,30,25,750,1
+BM7_Input_Redundant_Computation,7,7,7,7,True,CP -> AS -> CopyP -> AS -> DCE -> CF -> CP -> AS -> AS,30,25,750,1
+BM7_Input_Redundant_Computation,8,7,7,7,True,CSE -> CSE -> CSE -> CP -> AS -> CP -> CopyP -> DCE -> CP -> CP,30,25,750,1
+BM7_Input_Redundant_Computation,9,7,7,7,True,AS -> CopyP -> CopyP -> CF -> CF -> DCE -> CP -> CopyP,30,25,750,1
+BM7_Input_Redundant_Computation,10,7,7,7,True,CP -> CSE -> CSE -> AS -> CP -> CF -> CSE -> CSE -> CopyP -> DCE,30,25,750,1
+BM7_Input_Redundant_Computation,11,7,7,7,True,CopyP -> CSE -> AS -> CF -> AS -> CF -> DCE -> DCE -> CSE -> AS -> CopyP -> DCE,30,25,750,4
+BM7_Input_Redundant_Computation,12,7,7,7,True,CP -> DCE -> CSE -> CF -> AS -> CopyP -> AS -> CP -> DCE -> CSE -> CF -> AS,30,25,750,2
+BM7_Input_Redundant_Computation,13,7,7,7,True,CF -> CF -> CP -> AS -> CF -> DCE -> CopyP -> CP -> CSE -> CF -> DCE -> AS,30,25,750,1
+BM7_Input_Redundant_Computation,14,7,7,7,True,AS -> CF -> CopyP -> DCE -> CopyP -> CopyP -> DCE -> CP -> DCE -> CSE -> CopyP,30,25,750,1
+BM7_Input_Redundant_Computation,15,7,7,7,True,CSE -> AS -> CopyP -> DCE -> DCE -> CSE,30,25,750,1
+BM7_Input_Redundant_Computation,16,7,7,7,True,AS -> CopyP -> CP -> CF -> AS -> CopyP -> CP -> CF -> AS -> DCE -> DCE -> CP,30,25,750,1
+BM7_Input_Redundant_Computation,17,7,7,7,True,CopyP -> AS -> CopyP -> DCE -> DCE -> DCE -> CSE,30,25,750,1
+BM7_Input_Redundant_Computation,18,7,7,7,True,DCE -> CopyP -> CF -> CopyP -> CopyP -> DCE -> AS -> CopyP -> CF -> CSE -> DCE,30,25,750,1
+BM7_Input_Redundant_Computation,19,7,7,7,True,DCE -> CopyP -> DCE -> CP -> AS -> AS -> DCE -> CopyP -> DCE -> DCE -> DCE,30,25,750,2
+BM5_Algebraic_Identities,0,2,2,2,True,AS -> CP -> CSE -> AS -> CP -> CSE -> AS -> CSE -> DCE -> CopyP,30,25,750,2
+BM5_Algebraic_Identities,1,2,2,2,True,AS -> CP -> CSE -> AS -> CP -> CSE -> DCE -> CF -> CSE -> CSE -> CSE -> CopyP,30,25,750,3
+BM5_Algebraic_Identities,2,2,2,2,True,CP -> CSE -> AS -> CP -> CF -> CF -> CP -> CP -> CopyP -> AS -> DCE -> DCE,30,25,750,1
+BM5_Algebraic_Identities,3,2,2,2,True,AS -> DCE -> CF -> CP -> AS -> CopyP -> AS -> CF -> CP -> CSE -> DCE -> AS,30,25,750,3
+BM5_Algebraic_Identities,4,2,2,2,True,AS -> CopyP -> CP -> AS -> CP -> CP -> CSE -> AS -> CopyP -> CP -> AS -> DCE,30,25,750,3
+BM5_Algebraic_Identities,5,2,2,2,True,CP -> CP -> AS -> CP -> CP -> CSE -> AS -> AS -> CP -> CF -> DCE -> AS,30,25,750,4
+BM5_Algebraic_Identities,6,2,2,2,True,AS -> CF -> CP -> AS -> DCE -> CF -> CopyP -> CopyP -> DCE -> CP -> AS -> DCE,30,25,750,4
+BM5_Algebraic_Identities,7,2,2,2,True,CSE -> CP -> AS -> CP -> CF -> DCE -> DCE -> AS -> CP -> CSE -> CopyP -> DCE,30,25,750,2
+BM5_Algebraic_Identities,8,2,2,2,True,CF -> AS -> CF -> AS -> CP -> AS -> CP -> CSE -> DCE,30,25,750,1
+BM5_Algebraic_Identities,9,2,2,2,True,CSE -> AS -> CP -> CopyP -> AS -> AS -> DCE -> CP -> DCE,30,25,750,1
+BM5_Algebraic_Identities,10,2,2,2,True,CP -> CSE -> CSE -> AS -> CP -> CF -> CP -> CF -> DCE -> CopyP -> CSE -> CSE,30,25,750,3
+BM5_Algebraic_Identities,11,2,2,2,True,AS -> CP -> CP -> CF -> AS -> DCE -> CP -> DCE,30,25,750,4
+BM5_Algebraic_Identities,12,2,2,2,True,AS -> CF -> CP -> CSE -> CSE -> CP -> AS -> CP -> CF -> DCE,30,25,750,1
+BM5_Algebraic_Identities,13,2,2,2,True,AS -> CP -> CF -> AS -> CP -> CF -> CF -> CP -> CSE -> DCE -> AS -> AS,30,25,750,2
+BM5_Algebraic_Identities,14,2,2,2,True,AS -> CopyP -> CSE -> CP -> DCE -> AS -> AS -> CP -> CSE -> CSE -> DCE -> CF,30,25,750,3
+BM5_Algebraic_Identities,15,2,2,2,True,CP -> AS -> DCE -> AS -> CP -> CP -> AS -> DCE -> CP -> AS -> DCE,30,25,750,4
+BM5_Algebraic_Identities,16,2,2,2,True,AS -> CopyP -> CP -> CF -> AS -> CopyP -> CP -> CF -> AS -> DCE -> DCE -> CP,30,25,750,1
+BM5_Algebraic_Identities,17,2,2,2,True,AS -> CopyP -> CSE -> CP -> AS -> CP -> DCE -> CopyP -> CP -> CSE,30,25,750,3
+BM5_Algebraic_Identities,18,2,2,2,True,AS -> AS -> CSE -> CP -> CF -> CSE -> AS -> CSE -> AS -> CP -> DCE,30,25,750,2
+BM5_Algebraic_Identities,19,2,2,2,True,CSE -> CP -> AS -> CP -> CF -> CSE -> DCE -> CopyP -> CP -> AS -> DCE -> CSE,30,25,750,3

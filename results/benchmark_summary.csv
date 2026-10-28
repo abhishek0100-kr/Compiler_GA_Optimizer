@@ -1,0 +1,8 @@
+benchmark,initial_cost,fixed_single_cost,fixed_point_cost,exact_single_pass_optimum,ga_median_cost,ga_success_rate,median_optimality_gap,median_first_generation_optimum,variable_length_ga_median_cost,variable_random_750_eval_median_cost,variable_ga_win_rate_vs_random
+BM1_Arithmetic_Intensity,19,11,2,9,9.0,1.0,0.0,1.0,2.0,6.0,1.0
+BM2_Redundant_Expressions,25,15,2,13,13.0,1.0,0.0,1.0,2.0,7.0,1.0
+BM3_Dead_Code_Heavy,15,3,2,3,3.0,1.0,0.0,1.0,2.0,2.0,0.0
+BM4_Deep_Copy_Chain,10,3,2,3,3.0,1.0,0.0,1.0,2.0,2.0,0.0
+BM6_Input_Arithmetic,13,9,7,7,7.0,1.0,0.0,1.0,7.0,7.0,0.0
+BM7_Input_Redundant_Computation,16,9,7,7,7.0,1.0,0.0,1.0,7.0,7.0,0.0
+BM5_Algebraic_Identities,19,8,2,6,6.0,1.0,0.0,1.5,2.0,2.0,0.0

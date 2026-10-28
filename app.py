@@ -6,6 +6,9 @@ import streamlit as st
 from ir import validate_ir, format_ir
 from cost_model import compute_ir_cost, evaluate_pipeline_fitness
 from ga.engine import run_genetic_algorithm
+from ga.variable_engine import run_variable_length_ga
+from pipeline_modes import execute_to_fixed_point
+from semantics import preserves_outputs
 from benchmarks import get_all_benchmarks
 from run_experiments import FIXED_PIPELINE, run_random_search
 
@@ -68,6 +71,10 @@ def parse_ir_text(source):
     for lineno, raw in enumerate(source.splitlines(),1):
         line=raw.strip()
         if not line or line.startswith('#'): continue
+        if line.upper().startswith('INPUT '):
+            dest=line[6:].strip()
+            if not dest.isidentifier(): errors.append(f'Line {lineno}: INPUT requires a valid variable name.'); continue
+            program.append(('INPUT', dest)); continue
         if line.upper().startswith('PRINT'):
             operand=line[5:].strip()
             if not operand: errors.append(f'Line {lineno}: PRINT requires an operand.'); continue
@@ -123,7 +130,7 @@ elif page == "Optimize IR":
                 bm=st.selectbox("Select benchmark",list(benchmarks.keys()),format_func=lambda x:x.replace('_',' '))
                 ir=benchmarks[bm]; st.code(format_ir(ir),language=None); errors=[]
             else:
-                source=st.text_area("Three-address code",value="a = 10\nb = 20\nt1 = a + b\nc = a\nt2 = c * t1\nPRINT t2",height=220,help="One instruction per line. Supports constants, copies, binary arithmetic and PRINT.")
+                source=st.text_area("Three-address code",value="INPUT x\nINPUT y\nt1 = x + y\nt2 = t1 * 1\nPRINT t2",height=220,help="One instruction per line. Supports INPUT, constants, copies, binary arithmetic and PRINT.")
                 ir,errors=parse_ir_text(source)
                 for error in errors: st.error(error)
                 if not errors and ir:
@@ -133,6 +140,7 @@ elif page == "Optimize IR":
             st.caption("The optimizer transforms an intermediate representation; it does not compile or execute native machine code.")
         with right:
             st.markdown("#### Genetic algorithm settings")
+            search_mode=st.radio("Chromosome representation",["Permutation (each pass once)","Variable length (optional/repeated passes)"],help="Variable-length mode enlarges the search space and validates candidate outputs against sample inputs during fitness evaluation.")
             pop=st.slider("Population size",10,100,30,5)
             gens=st.slider("Generations",5,100,30,5)
             mut=st.slider("Mutation rate",0.0,1.0,.15,.05)
@@ -145,16 +153,27 @@ elif page == "Optimize IR":
     if run:
         seed=int(seed_text) if seed_text.strip().isdigit() else None
         with st.spinner("Evolving candidate optimization pipelines…"):
-            result=run_genetic_algorithm(ir,pop_size=pop,generations=gens,crossover_rate=cross,mutation_rate=mut,elitism_count=elite,seed=seed)
-            fixed=evaluate_pipeline_fitness(ir,FIXED_PIPELINE) if baselines else None
-            random_result=run_random_search(ir,num_evaluations=750,seed=42) if baselines else None
-        st.session_state["last_result"]={"ga":result,"ir":ir,"fixed":fixed,"random":random_result,"benchmark":bm if mode=="Benchmark program" else "Custom program","seed":seed}
+            input_count=sum(1 for inst in ir if inst[0]=="INPUT")
+            validation_cases=((),) if input_count==0 else tuple((tuple([v]*input_count)) for v in (0,1,-3,7,13))
+            if search_mode.startswith("Variable"):
+                result=run_variable_length_ga(ir,input_cases=validation_cases,pop_size=pop,generations=gens,crossover_rate=cross,mutation_rate=mut,elitism_count=elite,seed=seed)
+                result["history"]=[{**h,"avg_fitness":h.get("avg_fitness",h.get("best_fitness",0))} for h in result["history"]]
+            else:
+                result=run_genetic_algorithm(ir,pop_size=pop,generations=gens,crossover_rate=cross,mutation_rate=mut,elitism_count=elite,seed=seed)
+            if baselines:
+                fixed_ir,fixed_meta=execute_to_fixed_point(ir,FIXED_PIPELINE)
+                fixed_ok,fixed_detail=preserves_outputs(ir,fixed_ir,validation_cases)
+                fixed={"optimized_ir":fixed_ir,"cost":compute_ir_cost(fixed_ir) if fixed_ok else float("inf"),"fitness":0,"semantically_valid":fixed_ok,"rounds":fixed_meta["rounds"],"validation_detail":fixed_detail}
+                random_result=run_random_search(ir,num_evaluations=750,seed=42)
+            else:
+                fixed=None; random_result=None
+        st.session_state["last_result"]={"ga":result,"ir":ir,"fixed":fixed,"random":random_result,"benchmark":bm if mode=="Benchmark program" else "Custom program","seed":seed,"search_mode":search_mode}
     saved=st.session_state.get("last_result")
     if saved:
         result=saved["ga"]; original=saved["ir"]; best=result["best_solution"]; optimized=best["optimized_ir"]
         original_cost=compute_ir_cost(original); reduction=original_cost-best["cost"]; pct=100*reduction/original_cost if original_cost else 0
         st.markdown('<div class="kicker">02 / RESULTS</div>',unsafe_allow_html=True); st.header("Best discovered pipeline")
-        st.caption(f"Program: {saved['benchmark']} · Seed: {saved['seed'] if saved['seed'] is not None else 'not fixed'} · Passes apply from left to right.")
+        st.caption(f"Program: {saved['benchmark']} · Seed: {saved['seed'] if saved['seed'] is not None else 'not fixed'} · Mode: {saved.get('search_mode','permutation')} · Passes apply from left to right.")
         pipeline_view(result["best_pipeline_names"])
         m=st.columns(4,gap="medium")
         with m[0]: metric("Estimated cost",f"{original_cost} → {best['cost']}",f"{reduction:+g} cost units")
@@ -177,7 +196,9 @@ elif page == "Optimize IR":
             st.markdown("#### Baseline comparison"); st.caption("Lower estimated instruction cost is better; every method uses the same cost model.")
             bars=alt.Chart(df).mark_bar(cornerRadiusTopLeft=5,cornerRadiusTopRight=5).encode(x=alt.X("Method:N",sort=["Unoptimized","Fixed pipeline","Random search","Genetic algorithm"],axis=alt.Axis(labelAngle=0),title=None),y=alt.Y("Estimated cost:Q",scale=alt.Scale(zero=True)),color=alt.Color("Method:N",scale=alt.Scale(domain=["Unoptimized","Fixed pipeline","Random search","Genetic algorithm"],range=["#a8b8b0","#5485a0","#c99b47","#087f63"]),legend=None),tooltip=["Method","Estimated cost"]).properties(height=300)
             st.altair_chart(bars,use_container_width=True)
-            st.caption(f"Fixed pipeline order: {' → '.join(FIXED_PIPELINE)}. Random search evaluated 750 orderings.")
+            st.caption(f"Fixed-point baseline: {' → '.join(FIXED_PIPELINE)} repeated until stable (or 20 rounds). Random-search baseline evaluated 750 six-pass permutations; this is not a matched budget for variable-length mode.")
+        if best.get("semantically_valid") is not None:
+            st.caption(f"Semantic validation: {'PASS' if best.get('semantically_valid') else 'FAIL'} — {best.get('validation_detail','Finite test-case validation; not a formal proof.')}")
         st.download_button("Download optimized IR (.txt)",format_ir(optimized),file_name="optimized_ir.txt",mime="text/plain")
     else:
         st.info("Configure your program and run an experiment to see the pipeline, before/after IR, convergence and cost comparison here.")
@@ -201,7 +222,7 @@ elif page == "Benchmarks":
         with st.expander(f"{name.replace('_',' ')}  ·  {len(program)} instructions",expanded=False):
             st.write(descriptions.get(name,"A compiler optimization benchmark.")); st.code(format_ir(program),language=None)
             st.caption(f"Estimated starting cost: {compute_ir_cost(program)} cost units")
-    st.markdown('<div class="kicker">CUSTOM INPUT</div>',unsafe_allow_html=True); st.write("Need a different workload? The **Optimize IR** page accepts custom 3AC with assignments, numeric constants, binary `+ - * /` expressions, copies, and `PRINT` statements.")
+    st.markdown('<div class="kicker">CUSTOM INPUT</div>',unsafe_allow_html=True); st.write("Need a different workload? The **Optimize IR** page accepts custom 3AC with `INPUT`, assignments, numeric constants, binary `+ - * /` expressions, copies, and `PRINT` statements. The current IR is straight-line; branches and loops are not yet supported.")
 
 else:
     hero("How the optimizer works","A transparent overview of the search strategy, fitness function and evaluation limits behind the results.","REFERENCE / METHODOLOGY")
@@ -213,7 +234,7 @@ else:
         with col: st.markdown(f'<div class="card"><h3 style="font-size:1rem">{title}</h3><p style="font-size:.83rem;color:#6c7c7b;line-height:1.6">{desc}</p></div>',unsafe_allow_html=True)
     st.markdown('<div class="kicker">03 / FITNESS</div>',unsafe_allow_html=True); st.header("Static instruction-cost model")
     st.write("The project assigns weighted costs to IR instruction types and evaluates a candidate using the cost of its optimized output. The genetic algorithm maximizes fitness derived from that cost. This is a lightweight proxy for comparing transformations, not a hardware performance model.")
-    cost_df=pd.DataFrame([{"Instruction":"CONST","Meaning":"Constant assignment","Cost":1},{"Instruction":"COPY","Meaning":"Copy assignment","Cost":1},{"Instruction":"BINOP","Meaning":"Binary arithmetic","Cost":3},{"Instruction":"PRINT","Meaning":"Observable output","Cost":2}])
+    cost_df=pd.DataFrame([{"Instruction":"INPUT","Meaning":"Read external input","Cost":1},{"Instruction":"CONST","Meaning":"Constant assignment","Cost":1},{"Instruction":"COPY","Meaning":"Copy assignment","Cost":1},{"Instruction":"BINOP","Meaning":"Binary arithmetic","Cost":3},{"Instruction":"PRINT","Meaning":"Observable output","Cost":2}])
     st.dataframe(cost_df,use_container_width=True,hide_index=True)
     st.markdown('<div class="kicker">04 / INTERPRETATION</div>',unsafe_allow_html=True); st.header("What results do — and do not — mean")
     st.success("A lower estimated cost means the resulting IR scores better under this project's cost model. Compare methods on the same program and cost model for a fair experiment.")

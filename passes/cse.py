@@ -27,7 +27,11 @@ def cse_pass(ir):
     for inst in ir:
         opcode = inst[0]
 
-        if opcode == "CONST":
+        if opcode == "INPUT":
+            invalidate_variable(inst[1], expr_table)
+            new_ir.append(inst)
+
+        elif opcode == "CONST":
             dest, val = inst[1], inst[2]
             invalidate_variable(dest, expr_table)
             new_ir.append(inst)

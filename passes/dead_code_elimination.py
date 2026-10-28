@@ -9,7 +9,11 @@ def dead_code_elimination_pass(ir):
     for inst in reversed(ir):
         opcode = inst[0]
 
-        if opcode == "PRINT":
+        if opcode == "INPUT":
+            # Input consumption is observable even when its destination is unused.
+            kept_instructions.append(inst)
+
+        elif opcode == "PRINT":
             src = inst[1]
             if is_var(src):
                 live_vars.add(src)

@@ -24,7 +24,11 @@ def copy_propagation_pass(ir):
     for inst in ir:
         opcode = inst[0]
 
-        if opcode == "CONST":
+        if opcode == "INPUT":
+            invalidate_var(inst[1], copies)
+            new_ir.append(inst)
+
+        elif opcode == "CONST":
             dest, val = inst[1], inst[2]
             invalidate_var(dest, copies)
             new_ir.append(inst)
