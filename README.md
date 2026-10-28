@@ -1,88 +1,49 @@
-# Genetic Algorithm-Based Compiler Optimization Pass Ordering
+# Compiler Studio — Genetic Algorithm-Based Compiler Optimization
 
-An automated compiler optimization tool that uses a Genetic Algorithm (GA) to find an effective ordering of optimization passes for Three-Address Code (3AC) Intermediate Representation.
+A multi-page Streamlit application for exploring compiler optimization pass ordering over three-address code (3AC).
 
-## Project Overview
+## Features
+- **Overview:** project dashboard and guided workflow.
+- **Optimize IR:** benchmark/custom input, configurable genetic algorithm, before/after IR, convergence chart, baseline comparison, and optimized IR download.
+- **Optimization passes:** reference for all six compiler transformations.
+- **Benchmarks:** inspect five built-in programs and their estimated starting costs.
+- **Methodology:** explains representation, genetic search, static cost model, and limitations.
+- Responsive styling, reusable result state, custom 3AC validation, and optional reproducible random seed.
 
-The project addresses the Compiler Phase Ordering Problem, where different orders of optimization passes can produce different optimization results.
+## Run on Windows
+1. Extract the project ZIP.
+2. Open a terminal in the `Compiler_GA_Optimizer` folder.
+3. Create and activate an environment (recommended):
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   ```
+4. Install dependencies:
+   ```powershell
+   pip install -r requirements.txt
+   ```
+5. Start the app:
+   ```powershell
+   streamlit run app.py
+   ```
 
-The system uses:
-- Non-SSA 3AC Intermediate Representation
-- 6 compiler optimization passes
-- Static instruction cost model
-- Genetic Algorithm for pass ordering
-- Benchmark programs for evaluation
-
-## Optimization Passes
-
-1. Constant Propagation (CP)
-2. Constant Folding (CF)
-3. Copy Propagation (CopyP)
-4. Common Subexpression Elimination (CSE)
-5. Algebraic Simplification (AS)
-6. Dead Code Elimination (DCE)
-
-## Genetic Algorithm
-
-- Chromosome: Permutation of 6 optimization passes
-- Selection: Tournament Selection
-- Crossover: Order Crossover (OX)
-- Mutation: Swap Mutation
-- Elitism: Top 2 candidates
-- Population: 30–50
-- Generations: 50
-
-## Cost Model
-
-| Instruction | Cost |
-|---|---:|
-| CONST | 1 |
-| COPY | 1 |
-| BINOP | 3 |
-| PRINT | 2 |
-
-Fitness is calculated from the final optimized IR cost.
-
-## Project Structure
-
-```text
-Compiler_GA_Optimizer/
-├── ga/
-├── passes/
-├── benchmarks.py
-├── cost_model.py
-├── ir.py
-├── pipeline.py
-├── main.py
-├── run_experiments.py
-├── plot_results.py
-├── test_*.py
-├── requirements.txt
-└── README.md
-
-How to Run
-
-Setup:
-
-python -m venv .venv
-.venv\Scripts\Activate.ps1
+## Run on macOS/Linux
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+streamlit run app.py
+```
 
-Run Tests
-
+## Run tests
+Run the existing test scripts from the project root, for example:
+```bash
 python test_ir.py
 python test_all_passes.py
 python test_pipeline.py
 python test_cost_model.py
 python test_ga.py
+```
 
-Run the Project
-
-python main.py
-Run Experiments
-python run_experiments.py
-python plot_results.py
-
-Goal
-
-To automatically find effective compiler optimization pass orderings using a Genetic Algorithm and compare them with unoptimized, random, and manually selected orderings.
+## Important interpretation note
+The optimizer scores resulting IR with a static instruction-cost model (CONST=1, COPY=1, BINOP=3, PRINT=2). Results are estimated cost changes, not measured runtime speedups. Benchmark performance on a target runtime before making execution-speed claims.
